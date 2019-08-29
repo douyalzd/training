@@ -45,6 +45,7 @@ console.log(copyObj2); // {name: "我才不叫彭湖湾呢！ 哼  (。・`ω´�
 
 // 深拷贝手动写递归
 var array = [
+    [1,2,3],
     { number: 1 },
     { number: 2 },
     { number: 3 }
@@ -56,12 +57,10 @@ function copy(obj) { // 定义一个方法copy
     }
     for(var i in obj) { // 循环对象
         newobj[i] = typeof obj[i] === 'object' ? copy(obj[i]) : obj[i]; // 给newobj赋值，判断obj中某个是不是对象，如果是就执行copy()方法，如果不是，就取当前数组值
-        console.log(typeof obj[i] === 'object');
     }
     return newobj; // 返回newobj
 }
 var copyArray = copy(array); // 定义一个数组等于copy方法并传值array
 console.log(copyArray);
-copyArray[0].number = 100; // 手动给copyArray第一个赋值
-console.log(array); // [{number: 1}, { number: 2 }, { number: 3 }]
-console.log(copyArray); // [{number: 100}, { number: 2 }, { number: 3 }]
+
+

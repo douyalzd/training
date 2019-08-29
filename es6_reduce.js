@@ -2,6 +2,7 @@ import mapData from "./data/mapData.js";
 
 // reduce
 let data = mapData.data;
+console.log(data);
 let aa = data.reduce((result,item) => {
     let index = result.findIndex(d => d.id == item.area);
     if(index == -1) {
@@ -15,6 +16,8 @@ let aa = data.reduce((result,item) => {
     }else {
         result[index].children.push(item);
     }
+    console.log(result);
+    debugger
     return result;
 }, [])
 console.log(aa);

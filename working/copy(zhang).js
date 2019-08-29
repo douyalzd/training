@@ -16,8 +16,8 @@
 		}
 		return obj;
 	}
-	var obj = {a: 1, b: 2, c: {d:1, e:[3,4,5]}};
+	var obj = {f: [1,2,3], a: {c: 1}, b: 2, c: {d:1, e:[3,4,5]}};
 	var newObj = copy(obj)
-	obj.c.e.push(7);
+	obj.f[1] = 0;
 	console.log(obj);
 	console.log(newObj);

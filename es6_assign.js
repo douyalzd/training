@@ -45,44 +45,44 @@ var obj = Object.create({foo: 1}, { // foo 是个继承属性。
 //     }
 // }};
 console.log(obj);
-var copy = Object.assign({}, obj);
+var copy = Object.assign({}, obj,  obj2);
 console.log(copy); // { baz: 3 }
 
 
 // 深拷贝方法
-// function clone(obj) {
-//     var copy;
+function clone(obj) {
+    var copy;
  
-//     // Handle the 3 simple types, and null or undefined
-//     if (null == obj || "object" != typeof obj) return obj;
+    // Handle the 3 simple types, and null or undefined
+    if (null == obj || "object" != typeof obj) return obj;
  
-//     // Handle Date
-//     if (obj instanceof Date) {
-//         copy = new Date();
-//         copy.setTime(obj.getTime());
-//         return copy;
-//     }
+    // Handle Date
+    if (obj instanceof Date) {
+        copy = new Date();
+        copy.setTime(obj.getTime());
+        return copy;
+    }
  
-//     // Handle Array
-//     if (obj instanceof Array) {
-//         copy = [];
-//         for (var i = 0, len = obj.length; i < len; i++) {
-//             copy[i] = clone(obj[i]);
-//         }
-//         return copy;
-//     }
+    // Handle Array
+    if (obj instanceof Array) {
+        copy = [];
+        for (var i = 0, len = obj.length; i < len; i++) {
+            copy[i] = clone(obj[i]);
+        }
+        return copy;
+    }
  
-//     // Handle Object
-//     if (obj instanceof Object) {
-//         copy = {};
-//         for (var attr in obj) {
-//             if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
-//         }
-//         return copy;
-//     }
+    // Handle Object
+    if (obj instanceof Object) {
+        copy = {};
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+        }
+        return copy;
+    }
  
-//     throw new Error("Unable to copy obj! Its type isn't supported.");
-// }
+    throw new Error("Unable to copy obj! Its type isn't supported.");
+}
 
 // var tree = {
 //     "left"  : { "left" : null, "right" : null, "data" : 3 },
